@@ -72,7 +72,7 @@ class AlbumsAdapter(context: Context, list: List<Item>?,
             tvDuration = view.findViewById(R.id.tv_duration)
             ivAlbumCover = view.findViewById(R.id.img_album_cover)
             tempView = view.findViewById(R.id.temp_view)
-            view.setOnClickListener { v: View? -> itemClickedListener.onItemClicked(view, adapterPosition) }
+            view.setOnClickListener { itemClickedListener.onItemClicked(view, adapterPosition) }
         }
     }
 

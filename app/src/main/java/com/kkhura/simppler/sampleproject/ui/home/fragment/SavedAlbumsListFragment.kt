@@ -24,7 +24,7 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
     private var isAllAlbumsAdded: Boolean = false
     private var offset: Int = 0
     private var totalCount: Int = 0
-    private var list: List<Item> = ArrayList<Item>()
+    private var list: MutableList<Item> = mutableListOf()
     private var adapter: AlbumsAdapter? = null
 
     private val homeActivityViewModel: HomeActivityViewModel by lazy {
@@ -40,18 +40,16 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
         super.onViewCreated(view, savedInstanceState)
         setAdapter()
 
-        tv_albums_not_found.setOnClickListener(View.OnClickListener {
-            progress_bar.visibility = View.VISIBLE
-            homeActivityViewModel.getAlbums(10, 0).observe(this, android.arch.lifecycle.Observer { albumContainerModel ->
-                progress_bar.visibility = View.GONE
-                if (albumContainerModel is AlbumContainerModel) {
-                    renderAlbums(albumContainerModel)
-                    tv_albums_not_found.visibility = View.GONE
-                } else if (albumContainerModel is Error) {
-                    tv_albums_not_found.visibility = View.VISIBLE
-                    tv_albums_not_found.text = "Error"
-                }
-            })
+        progress_bar.visibility = View.VISIBLE
+        homeActivityViewModel.getAlbums(10, 0).observe(this, android.arch.lifecycle.Observer { albumContainerModel ->
+            progress_bar.visibility = View.GONE
+            if (albumContainerModel is AlbumContainerModel) {
+                renderAlbums(albumContainerModel)
+                tv_albums_not_found.visibility = View.GONE
+            } else if (albumContainerModel is Error) {
+                tv_albums_not_found.visibility = View.VISIBLE
+                tv_albums_not_found.text = "Error"
+            }
         })
     }
 
@@ -66,9 +64,10 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
     }
 
     fun renderAlbums(albumContainerModel: AlbumContainerModel) {
+        list.clear()
         rv_saved_albums_list.visibility = View.VISIBLE
         if (albumContainerModel.items.size > 0) {
-            list = albumContainerModel.items
+            list.addAll(albumContainerModel.items)
             totalCount = albumContainerModel.total
         }
         offset = list.size

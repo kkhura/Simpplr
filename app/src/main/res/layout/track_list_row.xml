@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false">
+
+    <FrameLayout
+        android:id="@+id/temp_view"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@android:color/transparent"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/temp_view"
+        android:layout_marginBottom="1dp"
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardElevation="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+
+            <ImageView
+                android:id="@+id/img_track_cover"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+                android:id="@+id/tv_track_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:maxLines="2"
+                android:layout_toEndOf="@+id/img_track_cover"
+                android:layout_toRightOf="@+id/img_track_cover"
+                android:paddingRight="14dp"
+                android:paddingEnd="14dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:visibility="visible"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/tv_track_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/img_track_cover"
+                android:layout_toRightOf="@+id/img_track_cover"
+                android:layout_below="@+id/tv_track_title"
+                android:paddingRight="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:visibility="visible"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/tv_track_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/img_track_cover"
+                android:layout_toRightOf="@+id/img_track_cover"
+                android:layout_below="@+id/tv_track_duration"
+                android:paddingRight="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:visibility="visible"
+                tools:ignore="RtlSymmetry" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

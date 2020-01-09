@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_tracks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:id="@+id/rel_lyt_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_album_cover"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:layout_height="200dp" />
+
+        <TextView
+            android:id="@+id/tv_album_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_album_cover"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tv_artists"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_album_name"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+</LinearLayout>

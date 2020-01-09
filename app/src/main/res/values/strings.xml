@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SampleProject</string>
+    <string name="login_proceed">Login Proceed</string>
+    <string name="no_albums_found">No Album found</string>
+    <string name="loading">Loading</string>
+    <string name="duration">Duration</string>
+    <string name="load_data">Load Data</string>
+
+    <string-array name="nav_drawer_items">
+        <item>My Albums</item>
+    </string-array>
+</resources>

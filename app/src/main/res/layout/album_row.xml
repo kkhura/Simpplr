@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false">
+
+    <FrameLayout
+        android:id="@+id/temp_view"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@android:color/transparent"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/temp_view"
+        android:layout_marginBottom="6dp"
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+
+            <ImageView
+                android:id="@+id/img_album_cover"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+                android:id="@+id/tv_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:maxLines="2"
+                android:layout_toRightOf="@+id/img_album_cover"
+                android:layout_toEndOf="@+id/img_album_cover"
+                android:paddingRight="14dp"
+                android:paddingEnd="14dp"
+                android:paddingLeft="0dp"
+                android:paddingStart="0dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:visibility="visible"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/tv_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/img_album_cover"
+                android:layout_toEndOf="@+id/img_album_cover"
+                android:layout_below="@+id/tv_artist"
+                android:paddingRight="10dp"
+                android:paddingEnd="10dp"
+                android:paddingLeft="1dp"
+                android:paddingStart="1dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:visibility="visible" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

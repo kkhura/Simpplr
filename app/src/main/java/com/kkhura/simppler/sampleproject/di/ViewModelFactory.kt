@@ -3,7 +3,6 @@ package com.kkhura.simppler.sampleproject.di
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.kkhura.simppler.sampleproject.ui.main.view.HomeActivityViewModel
-import com.kkhura.simppler.sampleproject.ui.main.view.LoginViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -30,11 +29,6 @@ abstract class ViewModelModule {
 
     @Binds
     internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(LoginViewModel::class)
-    internal abstract fun loginViewModel(viewModel: LoginViewModel): ViewModel
 
     @Binds
     @IntoMap

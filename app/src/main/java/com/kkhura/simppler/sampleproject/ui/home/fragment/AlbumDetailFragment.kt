@@ -24,20 +24,21 @@ class AlbumDetailFragment : BaseFragment() {
         return view
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val args: Bundle = getArguments()
-        selectedAlbumIndex = args.getInt(SELECTED_ALBUM_INDEX)
-        val url = (activity as HomeActivity).homeActivityViewModel.albumContainerModel.items[selectedAlbumIndex].album.images[0].url
-        loadImage(url)
+        arguments?.let { args ->
+            selectedAlbumIndex = args.getInt(SELECTED_ALBUM_INDEX)
+            val url = (activity as HomeActivity).homeActivityViewModel.albumContainerModel.items[selectedAlbumIndex].album.images[0].url
+            loadImage(url)
 
-        val items = (activity as HomeActivity).homeActivityViewModel.albumContainerModel.items[selectedAlbumIndex].album.tracks.items
+            val items = (activity as HomeActivity).homeActivityViewModel.albumContainerModel.items[selectedAlbumIndex].album.tracks.items
 
-        tv_artists.text = args.getString(ALBUM_TITLE)
-        title = args.getString(ALBUM_TITLE)
-        rv_tracks?.layoutManager = LinearLayoutManager(getActivity())
-        val tracksAdapter = TrackListAdapter(getActivity(), items)
-        rv_tracks!!.adapter = tracksAdapter
+            tv_artists.text = args.getString(ALBUM_TITLE)
+            title = args.getString(ALBUM_TITLE)
+            rv_tracks?.layoutManager = LinearLayoutManager(getActivity())
+            val tracksAdapter = TrackListAdapter(activity!!, items)
+            rv_tracks!!.adapter = tracksAdapter
+        }
     }
 
     fun loadImage(url: String) {

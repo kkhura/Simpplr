@@ -2,12 +2,18 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="activity" type="com.kkhura.simppler.sampleproject.ui.home.view.HomeActivity" />
+
+        <variable
+            name="activity"
+            type="com.kkhura.simppler.sampleproject.ui.home.view.HomeActivity" />
+
         <variable
             name="homeActivityViewModel"
             type="com.kkhura.simppler.sampleproject.ui.main.view.HomeActivityViewModel" />
     </data>
+
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/main_drawer"
         android:layout_width="match_parent"
@@ -17,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/main_toolbar"
                 android:layout_width="match_parent"
@@ -32,50 +39,48 @@
 
         <LinearLayout
             android:id="@+id/ll_navigation_drawer_container"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/dp_200"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="@android:color/white"
             android:fitsSystemWindows="true"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="?attr/colorPrimaryDark"
                 android:orientation="vertical"
-                android:paddingBottom="20dp"
-                android:layout_height="wrap_content">
+                android:paddingBottom="@dimen/dp_20">
 
                 <ImageView
                     android:id="@+id/iv_profile_pic"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:paddingTop="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="@dimen/dp_70"
+                    android:layout_height="@dimen/dp_70"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:paddingTop="@dimen/dp_10"
                     app:srcCompat="@mipmap/ic_launcher" />
 
                 <TextView
                     android:id="@+id/tv_user_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:paddingTop="@dimen/dp_10"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <TextView
                     android:id="@+id/tv_user_email_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp" />
+                    android:layout_marginStart="@dimen/dp_16" />
 
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_drawer_list"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
 

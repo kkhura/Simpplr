@@ -1,25 +1,19 @@
 package com.kkhura.simppler.sampleproject.ui.home.fragment
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kkhura.simppler.sampleproject.AppApplication
 import com.kkhura.simppler.sampleproject.BaseFragment
 import com.kkhura.simppler.sampleproject.R
 import com.kkhura.simppler.sampleproject.shareddata.ApplicationConstants
-import com.kkhura.simppler.sampleproject.shareddata.ApplicationConstants.ALBUM_URL
 import com.kkhura.simppler.sampleproject.ui.home.adapter.AlbumsAdapter
 import com.kkhura.simppler.sampleproject.ui.home.listner.AdapterOnItemClickable
 import com.kkhura.simppler.sampleproject.ui.home.model.AlbumContainerModel
 import com.kkhura.simppler.sampleproject.ui.home.model.Item
-import com.kkhura.simppler.sampleproject.ui.home.model.Item_
 import com.kkhura.simppler.sampleproject.ui.home.view.HomeActivity
-import com.kkhura.simppler.sampleproject.ui.main.view.HomeActivityViewModel
 import kotlinx.android.synthetic.main.fragment_saved_albums_list.*
-import java.util.*
 
 class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
     private var isAllAlbumsAdded: Boolean = false
@@ -32,7 +26,7 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
         return inflater.inflate(R.layout.fragment_saved_albums_list, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setAdapter()
 
@@ -53,7 +47,7 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
 
     private fun setAdapter() {
         rv_saved_albums_list.layoutManager = LinearLayoutManager(context)
-        adapter = AlbumsAdapter(activity, list, this)
+        adapter = AlbumsAdapter(activity!!, list, this)
         rv_saved_albums_list.setAdapter(adapter)
         offset = 0
     }

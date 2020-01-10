@@ -18,8 +18,6 @@ import com.kkhura.simppler.sampleproject.ui.main.view.HomeActivityViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : BaseActivity(), AdapterOnItemClickable {
-
-    val ROOT_FRAGMENT = "Saved Albums"
     private var drawerToggle: ActionBarDrawerToggle? = null
 
     public val homeActivityViewModel: HomeActivityViewModel by lazy {
@@ -78,15 +76,17 @@ class HomeActivity : BaseActivity(), AdapterOnItemClickable {
 
     private fun showSavedAlbumsList() {
         fragmentManager?.let { fragmentManager ->
-            if (fragmentManager.getBackStackEntryCount() > 1) fragmentManager.popBackStack(ROOT_FRAGMENT, android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
-            add(SavedAlbumsListFragment())
+            if (fragmentManager.backStackEntryCount > 1) {
+                fragmentManager.popBackStack()
+            } else {
+                add(SavedAlbumsListFragment())
+            }
         }
-
     }
 
     override fun onItemClicked(v: android.view.View?, position: Int) {
-        /*showSavedAlbumsList()
-        drawerLayout.closeDrawers()
-        drawerToggle.syncState()*/
+        showSavedAlbumsList()
+        main_drawer.closeDrawers()
+        drawerToggle?.syncState()
     }
 }

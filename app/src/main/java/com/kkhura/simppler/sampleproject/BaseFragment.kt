@@ -13,14 +13,14 @@ abstract class BaseFragment : Fragment() {
     private var fragmentHandler: AddFragmentHandler? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         if (activity != null) {
-            fragmentHandler = AddFragmentHandler(activity.supportFragmentManager)
+            fragmentHandler = AddFragmentHandler(activity!!.supportFragmentManager)
         }
         super.onCreate(savedInstanceState)
     }
 
     override fun onResume() {
         super.onResume()
-        if (activity != null) activity.title = title
+        if (activity != null) activity!!.title = title
     }
 
     abstract var title: String

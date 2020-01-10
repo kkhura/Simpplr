@@ -28,14 +28,19 @@ abstract class BaseActivity : AppCompatActivity() {
         syncDrawerToggleState()
     }
 
-    private fun syncDrawerToggleState() {
+    fun syncDrawerToggleState() {
         val drawerToggle = getDrawerToggle() ?: return
-        if (fragmentManager!!.backStackEntryCount > 1) {
-            drawerToggle.isDrawerIndicatorEnabled = false
-            drawerToggle.toolbarNavigationClickListener = View.OnClickListener { fragmentManager!!.popBackStack() }
-        } else {
-            drawerToggle.isDrawerIndicatorEnabled = true
-            drawerToggle.toolbarNavigationClickListener = drawerToggle.toolbarNavigationClickListener //open nav menu drawer
+        fragmentManager?.let { fragmentManager ->
+            if (fragmentManager.backStackEntryCount > 1) {
+                drawerToggle.isDrawerIndicatorEnabled = false
+                drawerToggle.toolbarNavigationClickListener = View.OnClickListener {
+                    syncDrawerToggleState()
+                    fragmentManager.popBackStack()
+                }
+            } else {
+                drawerToggle.isDrawerIndicatorEnabled = true
+                drawerToggle.toolbarNavigationClickListener = drawerToggle.toolbarNavigationClickListener
+            }
         }
     }
 
@@ -44,28 +49,14 @@ abstract class BaseActivity : AppCompatActivity() {
         fragmentManager = supportFragmentManager
         fragmentManager?.let {
             fragmentHandler = AddFragmentHandler(it)
-            it.addOnBackStackChangedListener(backStackListener)
+            it.addOnBackStackChangedListener(FragmentManager.OnBackStackChangedListener() {
+                syncDrawerToggleState()
+            })
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        getDrawer()?.addDrawerListener(object : DrawerListener {
-            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
-            override fun onDrawerOpened(drawerView: View) {
-                syncDrawerToggleState()
-            }
-
-            override fun onDrawerClosed(drawerView: View) {
-                syncDrawerToggleState()
-            }
-
-            override fun onDrawerStateChanged(newState: Int) {}
-        })
-    }
-
     override fun onDestroy() {
-        fragmentManager!!.removeOnBackStackChangedListener(backStackListener)
+        fragmentManager?.removeOnBackStackChangedListener(backStackListener)
         fragmentManager = null
         super.onDestroy()
     }
@@ -82,7 +73,7 @@ abstract class BaseActivity : AppCompatActivity() {
             return
         }
         super.onBackPressed()
-        if (fragmentManager!!.backStackEntryCount == 0) {
+        if (fragmentManager?.backStackEntryCount == 0) {
             finish()
         }
     }
@@ -97,9 +88,11 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     open fun sendBackPressToFragmentOnTop(): Boolean {
-        val fragmentOnTop: BaseFragment = fragmentHandler?.currentFragment!!
-        return fragmentOnTop is BackButtonSupportFragment &&
-                (fragmentOnTop as BackButtonSupportFragment).onBackPressed()
+        fragmentHandler?.currentFragment?.let { fragmentOnTop ->
+            return fragmentOnTop is BackButtonSupportFragment &&
+                    (fragmentOnTop as BackButtonSupportFragment).onBackPressed()
+        }
+        return false
     }
 
     protected abstract fun getDrawerToggle(): ActionBarDrawerToggle?

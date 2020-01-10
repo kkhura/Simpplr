@@ -8,7 +8,7 @@ import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [NetworkModule::class, ViewModelModule::class, AndroidInjectionModule::class])
+@Component(modules = [NetworkModule::class, ViewModelModule::class])
 interface NetworkComponent {
     fun inject(activity: BaseActivity)
 }

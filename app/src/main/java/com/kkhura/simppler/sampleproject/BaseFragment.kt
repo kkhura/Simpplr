@@ -12,19 +12,22 @@ abstract class BaseFragment : Fragment() {
 
     private var fragmentHandler: AddFragmentHandler? = null
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (activity != null) {
-            fragmentHandler = AddFragmentHandler(activity!!.supportFragmentManager)
+        activity?.let { activity ->
+            fragmentHandler = AddFragmentHandler(activity.supportFragmentManager)
+            (activity as BaseActivity).syncDrawerToggleState()
         }
         super.onCreate(savedInstanceState)
     }
 
     override fun onResume() {
         super.onResume()
-        if (activity != null) activity!!.title = title
+        activity?.let { activity ->
+            activity.title = title
+        }
     }
 
     abstract var title: String
     protected fun add(fragment: BaseFragment) {
-        fragmentHandler?.let { it.add(fragment) }
+        fragmentHandler?.add(fragment)
     }
 }

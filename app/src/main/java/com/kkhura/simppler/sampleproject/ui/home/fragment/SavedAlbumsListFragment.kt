@@ -38,7 +38,7 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
                 tv_albums_not_found.visibility = View.GONE
             } else if (albumContainerModel is Error) {
                 tv_albums_not_found.visibility = View.VISIBLE
-                tv_albums_not_found.text = "Error"
+                tv_albums_not_found.text = getString(R.string.authentication_error)
             }
         })
     }
@@ -46,10 +46,12 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
     override var title: String = "Saved Album"
 
     private fun setAdapter() {
-        rv_saved_albums_list.layoutManager = LinearLayoutManager(context)
-        adapter = AlbumsAdapter(activity!!, list, this)
-        rv_saved_albums_list.setAdapter(adapter)
-        offset = 0
+        activity?.let { activity ->
+            rv_saved_albums_list.layoutManager = LinearLayoutManager(context)
+            adapter = AlbumsAdapter(activity, list, this)
+            rv_saved_albums_list.setAdapter(adapter)
+            offset = 0
+        }
     }
 
     fun renderAlbums(albumContainerModel: AlbumContainerModel) {
@@ -69,7 +71,7 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
     override fun onItemClicked(v: View?, position: Int) {
         val albumDetailFragment = AlbumDetailFragment()
         val args = Bundle()
-        args.putSerializable(ApplicationConstants.ALBUM_TITLE, title)
+        args.putSerializable(ApplicationConstants.ALBUM_TITLE, list[position].album.name)
         args.putInt(ApplicationConstants.SELECTED_ALBUM_INDEX, position)
         albumDetailFragment.setArguments(args)
         add(albumDetailFragment)

@@ -13,7 +13,7 @@
             android:id="@+id/img_album_cover"
             android:layout_width="match_parent"
             android:scaleType="fitXY"
-            android:layout_height="200dp" />
+            android:layout_height="@dimen/dp_200" />
 
         <TextView
             android:id="@+id/tv_album_name"

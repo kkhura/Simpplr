@@ -2,6 +2,7 @@ package com.kkhura.simppler.sampleproject
 
 import android.app.Application
 import com.kkhura.simppler.sampleproject.di.DaggerNetworkComponent
+import com.kkhura.simppler.sampleproject.di.FragmentBuildersModule
 import com.kkhura.simppler.sampleproject.di.NetworkComponent
 import com.kkhura.simppler.sampleproject.di.NetworkModule
 

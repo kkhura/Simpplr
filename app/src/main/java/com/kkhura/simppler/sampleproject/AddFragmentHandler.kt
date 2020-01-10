@@ -2,8 +2,7 @@ package com.kkhura.simppler.sampleproject
 
 import android.support.v4.app.FragmentManager
 
-// The methods in this class are shared by both the BaseActivity and the BaseFragment.
-internal class AddFragmentHandler(val fragmentManager: FragmentManager) {
+internal class AddFragmentHandler(private val fragmentManager: FragmentManager) {
     fun add(fragment: BaseFragment) { //don't add a fragment of the same type on top of itself.
         currentFragment?.let {
             val currentFragment: BaseFragment = it

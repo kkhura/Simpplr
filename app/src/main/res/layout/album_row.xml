@@ -18,9 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/temp_view"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="@dimen/dp_4"
         card_view:cardBackgroundColor="@android:color/white"
-        card_view:cardElevation="4dp">
+        card_view:cardElevation="@dimen/dp_4">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -30,8 +30,8 @@
 
             <ImageView
                 android:id="@+id/img_album_cover"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
                 android:layout_centerVertical="true"
                 android:scaleType="centerCrop" />
 
@@ -40,40 +40,25 @@
                 android:id="@+id/tv_artist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginStart="12dp"
-                android:maxLines="2"
-                android:layout_toRightOf="@+id/img_album_cover"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
                 android:layout_toEndOf="@+id/img_album_cover"
-                android:paddingRight="14dp"
-                android:paddingEnd="14dp"
-                android:paddingLeft="0dp"
-                android:paddingStart="0dp"
-                android:layout_marginTop="16dp"
+                android:maxLines="2"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
-                android:visibility="visible"
-                tools:ignore="RtlHardcoded" />
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/tv_duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="6dp"
-                android:layout_toRightOf="@+id/img_album_cover"
-                android:layout_toEndOf="@+id/img_album_cover"
                 android:layout_below="@+id/tv_artist"
-                android:paddingRight="10dp"
-                android:paddingEnd="10dp"
-                android:paddingLeft="1dp"
-                android:paddingStart="1dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_toEndOf="@+id/img_album_cover"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:visibility="visible" />
-
 
         </RelativeLayout>
 

@@ -22,7 +22,7 @@ class HomeActivity : BaseActivity(), AdapterOnItemClickable {
     val ROOT_FRAGMENT = "Saved Albums"
     private var drawerToggle: ActionBarDrawerToggle? = null
 
-    private val homeActivityViewModel: HomeActivityViewModel by lazy {
+    public val homeActivityViewModel: HomeActivityViewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory)[HomeActivityViewModel::class.java]
     }
 

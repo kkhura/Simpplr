@@ -23,6 +23,7 @@ abstract class BaseActivity : AppCompatActivity() {
     private var backStackListener: () -> Unit = {
         backStackListener = this::onBackStackChangedEvent;
     }
+
     private fun onBackStackChangedEvent() {
         syncDrawerToggleState()
     }
@@ -31,7 +32,6 @@ abstract class BaseActivity : AppCompatActivity() {
         val drawerToggle = getDrawerToggle() ?: return
         if (fragmentManager!!.backStackEntryCount > 1) {
             drawerToggle.isDrawerIndicatorEnabled = false
-            // lambda expression
             drawerToggle.toolbarNavigationClickListener = View.OnClickListener { fragmentManager!!.popBackStack() }
         } else {
             drawerToggle.isDrawerIndicatorEnabled = true
@@ -75,15 +75,13 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (sendBackPressToDrawer()) { //the drawer consumed the back press
+        if (sendBackPressToDrawer()) {
             return
         }
-        if (sendBackPressToFragmentOnTop()) { // fragment on top consumed the back press
+        if (sendBackPressToFragmentOnTop()) {
             return
         }
-        //let the android system handle the back press, usually by popping the fragment
         super.onBackPressed()
-        //close the activity if back is pressed on the root fragment
         if (fragmentManager!!.backStackEntryCount == 0) {
             finish()
         }

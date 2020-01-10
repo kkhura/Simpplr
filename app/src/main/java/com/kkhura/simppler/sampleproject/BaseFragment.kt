@@ -23,7 +23,7 @@ abstract class BaseFragment : Fragment() {
         if (activity != null) activity.title = title
     }
 
-    abstract val title: String
+    abstract var title: String
     protected fun add(fragment: BaseFragment) {
         fragmentHandler?.let { it.add(fragment) }
     }

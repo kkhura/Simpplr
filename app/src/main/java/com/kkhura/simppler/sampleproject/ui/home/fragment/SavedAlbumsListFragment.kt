@@ -16,6 +16,7 @@ import com.kkhura.simppler.sampleproject.ui.home.listner.AdapterOnItemClickable
 import com.kkhura.simppler.sampleproject.ui.home.model.AlbumContainerModel
 import com.kkhura.simppler.sampleproject.ui.home.model.Item
 import com.kkhura.simppler.sampleproject.ui.home.model.Item_
+import com.kkhura.simppler.sampleproject.ui.home.view.HomeActivity
 import com.kkhura.simppler.sampleproject.ui.main.view.HomeActivityViewModel
 import kotlinx.android.synthetic.main.fragment_saved_albums_list.*
 import java.util.*
@@ -27,12 +28,7 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
     private var list: MutableList<Item> = mutableListOf()
     private var adapter: AlbumsAdapter? = null
 
-    private val homeActivityViewModel: HomeActivityViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory)[HomeActivityViewModel::class.java]
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        (activity.application as AppApplication).networkComponent.inject(this)
         return inflater.inflate(R.layout.fragment_saved_albums_list, container, false)
     }
 
@@ -41,7 +37,7 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
         setAdapter()
 
         progress_bar.visibility = View.VISIBLE
-        homeActivityViewModel.getAlbums(10, 0).observe(this, android.arch.lifecycle.Observer { albumContainerModel ->
+        (activity as HomeActivity).homeActivityViewModel.getAlbums(10, 0).observe(this, android.arch.lifecycle.Observer { albumContainerModel ->
             progress_bar.visibility = View.GONE
             if (albumContainerModel is AlbumContainerModel) {
                 renderAlbums(albumContainerModel)
@@ -53,8 +49,7 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
         })
     }
 
-    override val title: String
-        get() = "Saved Albums"
+    override var title: String = "Saved Album"
 
     private fun setAdapter() {
         rv_saved_albums_list.layoutManager = LinearLayoutManager(context)
@@ -82,8 +77,6 @@ class SavedAlbumsListFragment() : BaseFragment(), AdapterOnItemClickable {
         val args = Bundle()
         args.putSerializable(ApplicationConstants.ALBUM_TITLE, title)
         args.putInt(ApplicationConstants.SELECTED_ALBUM_INDEX, position)
-        args.putParcelableArrayList(ApplicationConstants.ALBUM, ArrayList<Item_>(list.get(position).album.tracks.items))
-        args.putString(ALBUM_URL, list.get(position).album.images.get(0).url)
         albumDetailFragment.setArguments(args)
         add(albumDetailFragment)
     }

@@ -9,5 +9,4 @@ import javax.inject.Singleton
 @Component(modules = [NetworkModule::class, ViewModelModule::class])
 interface NetworkComponent {
     fun inject(activity: BaseActivity)
-    fun inject(fragment: BaseFragment)
 }

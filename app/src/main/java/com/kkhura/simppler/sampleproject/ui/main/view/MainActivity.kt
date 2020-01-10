@@ -27,7 +27,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         (application as AppApplication).networkComponent.inject(this)
-        loginButton.setOnClickListener(View.OnClickListener { loginviewModel.onLoginClick(this) })
+//        loginButton.setOnClickListener(View.OnClickListener { loginviewModel.onLoginClick(this) })
     }
 
     override fun getDrawerToggle(): ActionBarDrawerToggle? {

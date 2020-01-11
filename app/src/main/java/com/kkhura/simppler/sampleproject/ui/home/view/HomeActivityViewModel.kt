@@ -15,6 +15,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
+
 class HomeActivityViewModel @Inject constructor(private val repo: HomeActivityRepo) : ViewModel() {
     private val mCompositeDisposable = CompositeDisposable()
     lateinit var albumContainerModel: AlbumContainerModel

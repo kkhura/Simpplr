@@ -1,0 +1,23 @@
+{
+  "birthdate": "1974-07-01",
+  "country": "US",
+  "display_name": "nullvoidinfinity",
+  "email": "piyushrajput@null.net",
+  "explicit_content": {
+    "filter_enabled": false,
+    "filter_locked": false
+  },
+  "external_urls": {
+    "spotify": "https://open.spotify.com/user/nullvoidinfinity"
+  },
+  "followers": {
+    "href": null,
+    "total": 0
+  },
+  "href": "https://api.spotify.com/v1/users/nullvoidinfinity",
+  "id": "nullvoidinfinity",
+  "images": [],
+  "product": "open",
+  "type": "user",
+  "uri": "spotify:user:nullvoidinfinity"
+}

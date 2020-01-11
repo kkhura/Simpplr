@@ -1,6 +1,5 @@
 package com.kkhura.simppler.sampleproject.ui.home.view
 
-import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,11 +7,9 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import com.kkhura.simppler.sampleproject.AppApplication
 import com.kkhura.simppler.sampleproject.BaseActivity
 import com.kkhura.simppler.sampleproject.R
-import com.kkhura.simppler.sampleproject.di.DaggerAppComponent
 import com.kkhura.simppler.sampleproject.ui.home.adapter.NavigationDrawerAdapter
 import com.kkhura.simppler.sampleproject.ui.home.fragment.SavedAlbumsListFragment
 import com.kkhura.simppler.sampleproject.ui.home.listner.AdapterOnItemClickable
@@ -20,8 +17,6 @@ import com.kkhura.simppler.sampleproject.ui.home.model.UserModel
 import com.kkhura.simppler.sampleproject.ui.main.view.HomeActivityViewModel
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import dagger.android.HasFragmentInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
